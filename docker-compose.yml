@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 5173:5173
+    stdin_open: true
+    volumes:
+      - ./frontend/:/frontend
+      - ./frontend/node_modules/:/frontend/node_modules
+    tty: true
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - '8080:80'
+
+  web:
+    build:
+      context: ./backend
+      dockerfile: ../Dockerfile
+    volumes:
+      - ./backend:/app/backend
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
+    container_name: backend 
+
