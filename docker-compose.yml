@@ -33,7 +33,7 @@ services:
   web:
     build:
       context: ./backend
-      dockerfile: ../Dockerfile
+      dockerfile: Dockerfile
     volumes:
       - ./backend:/app/backend
     ports:
