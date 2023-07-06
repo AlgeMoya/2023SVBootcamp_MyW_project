@@ -38,7 +38,7 @@ def chat(request):
 def send_message(message):
     url = 'https://api.openai.com/v1/chat/completions'
     headers = {
-        'Authorization': 'Bearer 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',
+        'Authorization': '',
         'Content-Type': 'application/json'
     }
     data = {
