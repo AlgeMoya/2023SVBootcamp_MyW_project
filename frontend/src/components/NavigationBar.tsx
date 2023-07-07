@@ -1,7 +1,7 @@
 import React from 'react';
 import NavigationBarBtn from './NavigationBarBtn';
 
-export default function Header() {
+export default function NavigationBar() {
     return(
         <>
             <div className="w-[1312px] h-16 absolute left-[99.5px] top-[13.5px] rounded-bl-20 rounded-br-20 bg-[#BCBAB8]" />
