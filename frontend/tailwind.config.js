@@ -16,13 +16,16 @@ export default {
       fontSize: px0_100,
       colors: {
         'beige': '#9b8f8f',
+        'beige-white': '#fdf9f6',
+        'choice': '#fde6d5'
       },
       fontFamily: {
         sans:['IBMPlexSansKR'],
       },
     },
-
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animate')
+  ],
 }
 

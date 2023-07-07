@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import './App.css';
 
-import Choice from './pages/Choice';
+import ChoicePage from './pages/ChoicePage';
 import NavigationBar from './components/NavigationBar';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/choice" element={<Choice />} />
+          <Route path="/choice" element={<ChoicePage />} />
         </Routes>
       </div>
       <NavigationBar />
