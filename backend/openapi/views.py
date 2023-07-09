@@ -38,7 +38,7 @@ def chat(request):
 def send_message(message):
     url = 'https://api.openai.com/v1/chat/completions'
     headers = {
-        'Authorization': '',
+        'Authorization': f'Bearer {os.getenv("OPENAI_SECRET_KEY")}',
         'Content-Type': 'application/json'
     }
     data = {
@@ -59,6 +59,9 @@ def send_message(message):
         # 챗봇의 응답을 가져와서 messages 리스트에 추가합니다
         answer = response_json['choices'][0]['message']['content']
         data['messages'].append({'role': 'assistant', 'content': answer})
+
+        chat_log = ChatLog(novel_id=1, chat_log=answer)
+        chat_log.save()
 
         return answer
     except requests.exceptions.RequestException as e:
