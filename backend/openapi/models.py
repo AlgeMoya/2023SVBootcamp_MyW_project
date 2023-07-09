@@ -1,4 +1,4 @@
-from django.db.backends.postgresql import models
+from django.db import models
 
 class ChatLog(models.Model):
     novel_id = models.IntegerField(primary_key=True)
