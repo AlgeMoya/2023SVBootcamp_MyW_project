@@ -1,0 +1,138 @@
+.carousel {
+  padding: 10px;
+  /* border: 1px solid black; */
+  background-color: #e2e1e0;
+  border-radius: 20px;
+  position: relative;
+  margin-bottom: 5rem;
+}
+
+/* Navigation 버튼의 기본 스타일 변경 */
+.swiper-button-prev,
+.swiper-button-next {
+  color: #ffffff; /* 원하는 색상으로 변경하세요 */
+}
+
+/* Navigation 버튼 호버(Hover) 시의 스타일 변경
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  color: #00ff00;
+} */
+
+.swiper-pagination-bullet-active {
+  background-color: #ffffff; /* 원하는 색상으로 변경하세요 */
+}
+
+.mySwiper {
+  width: 45rem;
+  height: 20rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+
+  /* border: 1px solid red; */
+  opacity: 0.75;
+  /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 2px;
+  display: inline-block;
+  position: relative;
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  border: 2px solid white;
+  /* 기타 스타일 유지 */
+}
+
+.startButton {
+  width: 20rem;
+  height: 5rem;
+  flex-shrink: 0;
+  border-radius: 40px;
+  background: #a59c9b;
+  margin: 0 auto;
+  /* 자식 요소(.child)를 중앙 정렬하기 */
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
+.startButton p {
+  color: #fff;
+  font-size: 2rem;
+  font-family: IBM Plex Sans KR;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 1rem;
+}
+
+.btnGroup {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+
+.button p {
+  margin-top: 0.1rem;
+  margin-left: 0.4rem;
+}
+
+.btnIcon {
+  display: flex;
+  border-radius: 50%;
+  align-items: flex-start;
+  gap: 10px;
+  flex-shrink: 0;
+  background: #a59c9b;
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25); */
+  width: 1.5rem;
+  height: 1.5rem;
+  left: 0.75rem;
+  top: 0.75rem;
+}
+
+.iconNext {
+  width: 0.75rem;
+  height: 1.2rem;
+  margin-top: 0.3rem;
+  margin-left: 0.5rem;
+}

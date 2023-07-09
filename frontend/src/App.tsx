@@ -1,22 +1,19 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
-import './App.css';
-
-import ChoicePage from './pages/ChoicePage';
-import NavigationBar from './components/NavigationBar';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import ChoicePage from "./pages/ChoicePage";
+import NavigationBar from "./components/NavigationBar";
+import MainPage from "./pages/MainPage";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Routes>
-          <Route path="/choice" element={<ChoicePage />} />
-        </Routes>
-      </div>
+    <div className="App">
       <NavigationBar />
-    </BrowserRouter>
+      <Routes>
+        <Route path="/choice" element={<ChoicePage />} />
+        <Route path="/mainpage" element={<MainPage />} />
+      </Routes>
+    </div>
   );
 }
 
-export default App
+export default App;
