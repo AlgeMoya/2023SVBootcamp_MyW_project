@@ -1,8 +1,10 @@
 
+import os
 import requests
 from django.http import JsonResponse
 from django.http import HttpResponse
 from django.shortcuts import render
+from .models import ChatLog
 
 # 입력 데이터를 처리하는 로직을 구현
 # 예시로 입력 데이터를 대문자로 변환하는 간단한 예시를 제공
@@ -60,12 +62,13 @@ def send_message(message):
         answer = response_json['choices'][0]['message']['content']
         data['messages'].append({'role': 'assistant', 'content': answer})
 
-        chat_log = ChatLog(novel_id=1, chat_log=answer)
+        chat_log = ChatLog(chat_log=answer)
         chat_log.save()
 
         return answer
     except requests.exceptions.RequestException as e:
         print('An error occurred while sending the request:', str(e))
+
    
 
 
