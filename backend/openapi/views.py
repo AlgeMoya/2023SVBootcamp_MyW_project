@@ -62,8 +62,13 @@ def send_message(message):
         answer = response_json['choices'][0]['message']['content']
         data['messages'].append({'role': 'assistant', 'content': answer})
 
-        chat_log = ChatLog(chat_log=answer)
-        chat_log.save()
+        previous_chat_log = ChatLog.objects.last()
+        if previous_chat_log:
+            previous_chat_log.chat_log = answer
+            previous_chat_log.save()
+        else:
+            chat_log = ChatLog(chat_log=answer)
+            chat_log.save()
 
         return answer
     except requests.exceptions.RequestException as e:
