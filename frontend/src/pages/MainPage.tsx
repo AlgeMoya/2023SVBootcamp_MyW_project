@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import icon_door from ".././assets/icon_door.png";
 import icon_book from ".././assets/icon_book.png";
 import icon_user from ".././assets/icon_user.png";
