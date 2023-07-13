@@ -3,15 +3,10 @@
 @tailwind utilities;
 
 @layer components {
-  .btn-base {
-    @apply py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
-  }
-
-  .carousel {
+  /* .carousel {
     @apply px-4 py-8 bg-gray-300 rounded-lg relative mb-20;
   }
 
-  /* Navigation 버튼의 기본 스타일 변경 */
   .swiper-button-prev {
     @apply swiper-button-white;
   }
@@ -38,14 +33,14 @@
 
   .swiper-text {
     @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-white text-2xl font-bold pt-4 pb-4 pr-2 pl-2 border-2 border-white;
-  }
+  } */
 
   .startButton {
-    @apply w-80 h-20 flex-shrink-0 rounded-full bg-gray-400 mx-auto flex justify-center mb-20;
+    @apply w-80 h-20 flex-shrink-0 rounded-full bg-mainpagegray mx-auto flex justify-center mb-20;
   }
 
   .startButton p {
-    @apply text-white text-2xl font-normal leading-normal mt-4;
+    @apply text-white text-3xl font-normal leading-normal mt-4;
   }
 
   .btnGroup {
@@ -57,11 +52,11 @@
   }
 
   .button p {
-    @apply mt-1 ml-4;
+    @apply ml-3;
   }
 
   .btnIcon {
-    @apply flex rounded-full items-start gap-2 flex-shrink-0 bg-gray-400 w-6 h-6 left-3 top-3;
+    @apply flex rounded-full items-start gap-2 flex-shrink-0 bg-mainpagegray w-6 h-6 left-3 top-3;
   }
 
   .iconNext {
@@ -69,40 +64,38 @@
   }
 }
 
-/* .carousel {
+.carousel {
   padding: 1rem;
   background-color: #e2e1e0;
   border-radius: 20px;
   position: relative;
   margin-bottom: 5rem;
-} */
+}
 
-/* Navigation 버튼의 기본 스타일 변경 */
-/* .swiper-button-prev,
+.swiper-button-prev,
 .swiper-button-next {
   color: #ffffff;
-} */
+}
 
-/* Navigation 버튼 호버(Hover) 시의 스타일 변경
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
   color: #00ff00;
-} */
+}
 
-/* .swiper-pagination-bullet-active {
+.swiper-pagination-bullet-active {
   background-color: #ffffff;
-} */
+}
 
-/* .mySwiper {
+.mySwiper {
   width: 45rem;
   height: 20rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
   position: relative;
   opacity: 0.75;
-} */
+}
 
-/* .swiper-slide {
+.swiper-slide {
   text-align: center;
   font-size: 18px;
   background: #fff;
@@ -113,16 +106,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-} */
+}
 
-/* .swiper-slide img {
+.swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-} */
+}
 
-/* .swiper-text {
+.swiper-text {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -136,7 +129,7 @@
   padding-right: 0.5rem;
   padding-left: 0.5rem;
   border: 2px solid white;
-} */
+}
 
 /* .startButton {
   width: 20rem;
@@ -148,9 +141,9 @@
   display: flex;
   justify-content: center;
   margin-bottom: 5rem;
-} */
+}
 
-/* .startButton p {
+.startButton p {
   color: #fff;
   font-size: 2rem;
   font-family: IBM Plex Sans KR;
@@ -158,9 +151,9 @@
   font-weight: 400;
   line-height: normal;
   margin-top: 1rem;
-} */
+}
 
-/* .btnGroup {
+.btnGroup {
   display: flex;
   justify-content: center;
   margin: auto;
@@ -171,14 +164,14 @@
   justify-content: flex-start;
   margin-left: 2.5rem;
   margin-right: 2.5rem;
-} */
+}
 
-/* .button p {
+.button p {
   margin-top: 0.1rem;
   margin-left: 0.4rem;
-} */
+}
 
-/* .btnIcon {
+.btnIcon {
   display: flex;
   border-radius: 50%;
   align-items: flex-start;
@@ -189,9 +182,9 @@
   height: 1.5rem;
   left: 0.75rem;
   top: 0.75rem;
-} */
+}
 
-/* .iconNext {
+.iconNext {
   width: 0.75rem;
   height: 1.2rem;
   margin-top: 0.3rem;
