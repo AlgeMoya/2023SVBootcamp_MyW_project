@@ -27,7 +27,7 @@ const Page8: React.FC = () => {
   const handleLeftKeywordClick = (keyword: string) => {
     setSelectedLeftKeywords((prevKeywords) => {
       if (prevKeywords.includes(keyword)) {
-        return prevKeywords.filter((k) => k !== keyword);
+        return prevKeywords;
       } else {
         return [...prevKeywords, keyword];
       }
@@ -47,7 +47,7 @@ const Page8: React.FC = () => {
   const handleMiddleKeywordClick = (keyword: string) => {
     setSelectedMiddleKeywords((prevKeywords) => {
       if (prevKeywords.includes(keyword)) {
-        return prevKeywords.filter((k) => k !== keyword);
+        return prevKeywords;
       } else {
         return [...prevKeywords, keyword];
       }
@@ -68,7 +68,7 @@ const Page8: React.FC = () => {
   const handleRightKeywordClick = (keyword: string) => {
     setSelectedRightKeywords((prevKeywords) => {
       if (prevKeywords.includes(keyword)) {
-        return prevKeywords.filter((k) => k !== keyword);
+        return prevKeywords;
       } else {
         return [...prevKeywords, keyword];
       }
@@ -101,7 +101,9 @@ const Page8: React.FC = () => {
         right: '100px',
         height: '80vh',
         marginBottom: '0.1%',
-        backgroundColor: '#E3DDD7',
+        backgroundColor: '#E9E7E4',
+        borderRadius: '20px',
+        backdropFilter: 'blur(2px)',
         padding: '50px',
         display: 'flex',
         flexDirection: 'column',
