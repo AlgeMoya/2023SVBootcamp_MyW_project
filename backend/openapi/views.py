@@ -1,52 +1,46 @@
 import os
 import requests
+import datetime
+import random
 import openai
-from django.http import HttpResponse
-from .models import Novel
+from io import BytesIO
+from PIL import Image
+
+import boto3
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
-from django.http import JsonResponse
-from .models import ChatLog
-from rest_framework import serializers
+from django.conf import settings
+
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.views import APIView
+from rest_framework import serializers
 
 from openapi.serializers import (
     BackgroundSerializer,
     CharacterSerializer,
     NovelSerializer,
 )
-from rest_framework.response import Response
-from rest_framework.views import APIView
 
-from rest_framework import serializers
-from rest_framework.decorators import api_view
-from rest_framework import status
+from .models import Novel, ChatLog
 from users.models import MyUser
-import datetime
-import random
-from PIL import Image
-from io import BytesIO
-import boto3
-from django.conf import settings
+
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 
 
-class NovelSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Novel
-        fields = "__all__"
 
+# Novel List
 @swagger_auto_schema(method='get', manual_parameters=[
     openapi.Parameter('HTTP_ID', openapi.IN_HEADER, description="ID of the user who owns the novels", type=openapi.TYPE_STRING)
 ])
 @api_view(["GET"])
 def novel_list(request):
     """
-    list all the novels
+    List all the novels
     ---
     security:
         - api_key: []
@@ -65,6 +59,7 @@ def novel_list(request):
         return Response(data, status=status.HTTP_200_OK)
     
 
+# Retrieve or Delete a Novel
 @swagger_auto_schema(
     methods=["GET", "DELETE"],
     manual_parameters=[
@@ -101,7 +96,7 @@ def mynovels(request, novel_id):
         background_data = list(novel.novel_background.values(*background_fields))
 
         serialized_data = {
-            "novel": serializers.serialize("python", [novel]),
+            "novel": NovelSerializer(novel).data,
             "characters": character_data,
             "novel_stories": novel_story_data,
             "backgrounds": background_data,
@@ -309,17 +304,15 @@ class init_setting_APIView(APIView):
             return Response({"error": novel_serializer.errors}, status=400)
 
 
-def dalleIMG(query):
-    OPENAI_API_KEY = os.getenv("OPENAI_SECRET_KEY")
-  
-    # openai API 키 인증
-    openai.api_key = OPENAI_API_KEY
+# ChatGPT API와 이미지 업로드에 필요한 키 설정
+OPENAI_API_KEY = os.getenv("OPENAI_SECRET_KEY")
+openai.api_key = OPENAI_API_KEY
 
+def dalleIMG(query):
     # 모델 - GPT 3.5 Turbo 선택
     model = "gpt-3.5-turbo"
 
-
-
+    # 대화 메시지 생성
     messages = [
         {
             "role": "system",
@@ -339,7 +332,7 @@ def dalleIMG(query):
         }
     )
 
-    # ChatGPT API 호출하기
+    # ChatGPT API 호출하기 (번역)
     response = openai.ChatCompletion.create(
         model=model,
         messages=messages
@@ -363,11 +356,11 @@ def dalleIMG(query):
     messages.append(
         {
             "role": "user", 
-            "content": "Condense up to 4 outward description to focus on nouns and adjectives separated by ,"
+            "content": "Condense up to 4 outward descriptions to focus on nouns and adjectives separated by ,"
         }
     )
 
-    # ChatGPT API 호출하기
+    # ChatGPT API 호출하기 (이미지 생성을 위한 프롬프트)
     response = openai.ChatCompletion.create(
         model=model,
         messages=messages
@@ -375,19 +368,19 @@ def dalleIMG(query):
     answer4 = response['choices'][0]['message']['content']
     print(answer4)
 
-    # 이미지 생성을 위한 프롬프트
+    # 이미지 생성을 위한 프롬프트 설정
     params = ", concept art, realistic lighting, ultra-detailed, 8K, photorealism, digital art"
     prompt = f"{answer4}{params}"
     print(prompt)
 
+    # ChatGPT API를 사용하여 이미지 생성
     response = openai.Image.create(
-    prompt=prompt,
-    n=1,
-    size="512x512"
+        prompt=prompt,
+        n=1,
+        size="512x512"
     )
     image_url = response['data'][0]['url']
     print(image_url)
-
 
     # 이미지 다운로드
     res = requests.get(image_url)
