@@ -11,3 +11,5 @@ drf_yasg
 django-prometheus
 django-storages
 Pillow
+Pyjwt
+simplejwt
