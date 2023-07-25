@@ -195,3 +195,10 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(seconds=10),  # 원하는 만료 시간 설정 (예: 15분)
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),  # refresh 토큰 만료 시간 (예: 1일)
 }
+
+
+SWAGGER_SETTINGS = {
+    "SECURITY_DEFINITIONS": {
+        "api_key": {"type": "apiKey", "in": "header", "name": "HTTP_ID"}
+    },
+}
