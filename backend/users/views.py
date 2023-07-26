@@ -12,6 +12,7 @@ from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 from .models import MyUser
 
+
 def index(request):
     return HttpResponse("안녕하세요 pybo에 오신것을 환영합니다.")
 
@@ -79,5 +80,5 @@ class LoginAPIView(APIView):
         user = request.data
         serializer = self.serializer_class(data=user)
         serializer.is_valid(raise_exception=True)
-        userData = MyUser.objects.get(email=user['email'])
+        userData = MyUser.objects.get(email=user["email"])
         return Response(userData.id, status=status.HTTP_200_OK)
